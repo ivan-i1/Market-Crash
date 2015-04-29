@@ -33,26 +33,24 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('listsCtrl', function($scope) {
-  $scope.lists = [
-    { title: 'Monthly', id: 1 },
-    { title: 'Party', id: 2 },
-    { title: 'Lassagna', id: 3 }
-  ];
+.controller('listsCtrl', function($scope,$http) {
+
+  // $scope.lists = [
+  //   { title: 'Monthly', id: 1 },
+  //   { title: 'Party', id: 2 },
+  //   { title: 'Lassagna', id: 3 }
+  // ];
+  // var articles = Restangular.all('../articles.json');
+  $http.get('../lists.json').
+  success(function(data){
+    $scope.lists = data;
+  })
+
 })
 
 .controller('listCtrl', function($scope, $stateParams) {
-  $scope.monthly = [
-    // { name: '', quantity: '', image: '', walmart: , costco: , target: },
-    { name: 'Oreo Mint Creme', quantity: '575gr', image: 'oreomint.jpg', walmart: 4.99, costco: 3.25, target: 3.99}
-
-  ];
-  $scope.party = [
-    // { name: '', quantity: '', image: '', walmart: , costco: , target: },
-    { name: 'Coke', quantity: '12oz', image: 'coke.png', walmart: 0.70, costco: 0.80, target: 0.99}
-  ];
-  $scope.lassagna = [
-    // { name: '', quantity: '', image: '', walmart: , costco: , target: },
-    { name: 'Kraft Extra Sharp Cheddar Cheese', quantity: '32oz', image: 'kraft-cheddar.jpg', costco: 6.49, target: 6.99}
-  ];
+  // $http.get('../lists.json')
+  // .success(function(data){
+  //   $scope.
+  // })
 });

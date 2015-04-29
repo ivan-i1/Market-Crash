@@ -1,0 +1,20 @@
+[
+  { "title": "Monthly", "id": 1, "articles": [
+  	{ "name": "Oreo Mint Creme", "quantity": "575gr", "image": "oreomint.jpg", "walmart": 4.99, "costco": 3.25, "target": 3.99},
+	{ "name": "Coke", "quantity": "12oz", "image": "coke.png", "walmart": 0.70, "costco": 0.80, "target": 0.99},
+	{ "name": "Kraft Extra Sharp Cheddar Cheese", "quantity": "32oz", "image": "kraft-cheddar.jpg", "costco": 6.49, "target": 6.99}
+  ]
+   },
+  { "title": "Party", "id": 2, "articles": [
+  	{ "name": "Oreo Mint Creme", "quantity": "575gr", "image": "oreomint.jpg", "walmart": 4.99, "costco": 3.25, "target": 3.99},
+	{ "name": "Coke", "quantity": "12oz", "image": "coke.png", "walmart": 0.70, "costco": 0.80, "target": 0.99},
+	{ "name": "Kraft Extra Sharp Cheddar Cheese", "quantity": "32oz", "image": "kraft-cheddar.jpg", "costco": 6.49, "target": 6.99}
+  ]
+   },
+  { "title": "Lassagna", "id": 3, "articles": [
+  	{ "name": "Oreo Mint Creme", "quantity": "575gr", "image": "oreomint.jpg", "walmart": 4.99, "costco": 3.25, "target": 3.99},
+	{ "name": "Coke", "quantity": "12oz", "image": "coke.png", "walmart": 0.70, "costco": 0.80, "target": 0.99},
+	{ "name": "Kraft Extra Sharp Cheddar Cheese", "quantity": "32oz", "image": "kraft-cheddar.jpg", "costco": 6.49, "target": 6.99}
+  ]
+   }
+]

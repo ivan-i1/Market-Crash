@@ -1,25 +1,20 @@
 <ion-view view-title="List">
-  <ion-content>
-    <!-- <h1>list</h1> -->
-    <!-- <ion-item ng-repeat="list in lists" href="#/app/lists/{{list.id}}">
-        {{list.title}}
-    </ion-item>
-    <div class="list card padding"> -->
-  	<!-- <ion-item ng-repeat="product in Lassagna" h -->
-	  <div class="item item-avatar">
-	    <h2>Kraft Extra Sharp Cheddar Cheese</h2>
-	    <p>32 oz</p>
-	  </div>
-	
-	  <div class="item item-image">
-	    <img src="images/kraft-cheddar.jpg">
-	  </div>
-	
-	  <a class="item item-icon-left assertive" href="#">
-	    <i class="icon ion-compose"></i>
-	    Add to list
-	  </a>
-	
-	</div>
-  </ion-content>
+	<ion-content class="has-header has-subheader">
+        <ion-list>
+            <ion-item ng-repeat="list in lists" href="#/app/lists/{{list.id}}">
+              {{list.title}}
+            </ion-item>
+            <ion-item ng-repeat="item in lists.articles" type="item-text-wrap" class="item-avatar"
+                      href="#/app/lists/{{lists.list.id}}/{{item.id}}">
+                <!-- <img src="pics/{{employee.pic}}"/>
+                {{list.}}
+                <p>{{employee.title}}</p> -->
+                {{list.item}}
+                <!-- <a class="item item-icon-left assertive" href="#">
+                  <i class="icon ion-compose"></i>
+                  Add to list
+                </a> -->
+            </ion-item>
+        </ion-list>
+    </ion-content>
 </ion-view>
