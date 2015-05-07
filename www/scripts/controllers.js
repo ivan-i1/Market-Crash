@@ -33,24 +33,28 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('listsCtrl', function($scope,$http) {
-
-  // $scope.lists = [
-  //   { title: 'Monthly', id: 1 },
-  //   { title: 'Party', id: 2 },
-  //   { title: 'Lassagna', id: 3 }
-  // ];
-  // var articles = Restangular.all('../articles.json');
-  $http.get('../lists.json').
-  success(function(data){
-    $scope.lists = data;
-  })
+.controller('addListCtrl',function($scope, $stateParams, Lists){
 
 })
 
-.controller('listCtrl', function($scope, $stateParams) {
-  // $http.get('../lists.json')
-  // .success(function(data){
-  //   $scope.
+.controller('addProdCtrl',function($scope, $stateParams, Articles){
+  
+})
+
+.controller('listsCtrl', function($scope, $stateParams, Lists) {
+  // $http.get('../lists.json').
+  // success(function(data){
+  //   $scope.lists = data;
   // })
+  $scope.lists = Lists.query();
+  // $scope.currentList = function(list){
+    
+  // };
+  // console.log($scope.currentList)
+})
+
+.controller('listCtrl', function($scope, $stateParams, Lists) {
+  console.log($stateParams);
+  console.log($stateParams.listId);
+  $scope.list = Lists.get({id:Number($stateParams.listId)});
 });

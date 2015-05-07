@@ -1,19 +1,8 @@
 <ion-view view-title="List">
 	<ion-content class="has-header has-subheader">
         <ion-list>
-            <ion-item ng-repeat="list in lists" href="#/app/lists/{{list.id}}">
-              {{list.title}}
-            </ion-item>
-            <ion-item ng-repeat="item in lists.articles" type="item-text-wrap" class="item-avatar"
-                      href="#/app/lists/{{lists.list.id}}/{{item.id}}">
-                <!-- <img src="pics/{{employee.pic}}"/>
-                {{list.}}
-                <p>{{employee.title}}</p> -->
-                {{list.item}}
-                <!-- <a class="item item-icon-left assertive" href="#">
-                  <i class="icon ion-compose"></i>
-                  Add to list
-                </a> -->
+            <ion-item ng-repeat="article in articles" href="#/app/lists/{{list.id}}/{{article.name}}">
+              {{article.name}}
             </ion-item>
         </ion-list>
     </ion-content>
