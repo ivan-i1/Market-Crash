@@ -1,0 +1,12 @@
+<ion-view view-title="Lists">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="list in lists" href="#/app/lists/{{list.id}}" >
+        {{list.title}}
+      </ion-item>
+    </ion-list>
+    <button class="button button-positive" ui-sref="app.addList()">
+        Add New List
+    </button>
+  </ion-content>
+</ion-view>
