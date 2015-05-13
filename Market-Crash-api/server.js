@@ -1,63 +1,123 @@
-// // Require the stuff we need
-// var express = require("express");
-// var http = require("http");
-
-// // Build the app
-// var app = express();
-
-// // Add some middleware
-// app.use(function(request, response) {
-//   response.writeHead(200, { "Content-Type": "text/plain" });
-//   response.end("Hello world!\n");
-// });
-
-// // Start it up!
-// http.createServer(app).listen(8000);
-// var express = require("express");
-// var http = require("http");
-// var app = express();
-
-// // Logging middleware
-// app.use(function(request, response, next) {
-//   console.log("In comes a " + request.method + " to " + request.url);
-//   next();
-// });
-
-// // Send "hello world"
-// app.use(function(request, response) {
-//   response.writeHead(200, { "Content-Type": "text/plain" });
-//   response.end("Hello world!\n");
-// });
-
-// http.createServer(app).listen(8000);
 var express = require("express");
 var logger = require("morgan");
 var http = require("http");
+var bodyParser = require ("body-parser");
+// var multer = require ("multer");
+var ok = require("okay");
+
+var mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost:27017/test");
+
 var app = express();
+var port = process.env.PORT || 8000;
 
 app.use(logger());
-
-app.all("*", function(request, response, next) {
-  response.writeHead(200, { "Content-Type": "text/plain" });
-  next();
+// app.use(multer());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+var ObjectId = mongoose.Types.ObjectId();
+var schema = mongoose.Schema;
+var productSchema = schema({
+    name: {type: String},
+    quantity: {type: String},
+    stores: {
+        name: {type: String},
+        price: {type: Number}
+    }
 });
 
-app.get("/", function(request, response) {
-  response.end("Welcome to the homepage!");
+var listSchema = schema({
+    title: {type: String},
+    products: [{ type: schema.Types.ObjectId, ref: "product"}]
 });
 
-app.get("/about", function(request, response) {
-  response.end("Welcome to the about page!");
-});
+mongoose.model("product", productSchema);
+mongoose.model("list", listSchema);
 
-app.get("*", function(request, response) {
-  response.end("404!");
-});
+var router = express.Router();
 
-app.post("post/", function(req, res){
+router
+    .use(bodyParser.json())
+    .route("/api/products")
+        .get(function (req,res){
+            product.find({}, ok(next, function(error, posts) {
+                res.send(posts);
+            }));
+        });
 
-	console.log(req);
-	response.end("POST successfull");
-});
+router
+    .param("id", function (req, res, next) {
+        req.dbQuery = {
+            id: parseInt(req.params.id, 10)
+        };
+        next();
+    })
+    .route("/api/products/:id")
+        .get(function (req, res){
+            product.findOne({id:req.params.id}).exec(ok(next,function(prod){
+                res.send(prod.toJSON());
+            }));
+        })
+        .post(function (req, res){
+            var prod = new product(req.body);
+            prod.save(ok(next, function(results){
+                res.send(results);
+            }));
+        })
+        .put(function (req, res){
+            product.findOne({id: req.params.id}, ok(next, function(prod) {
+                prod.set(req.body);
+                prod.save(ok(next, function(prod) {
+                    res.send(prod.toJSON());
+                }));
+            }));
+        });
 
-http.createServer(app).listen(8000);
+router
+    .use(bodyParser.json())
+    .route("/api/lists")
+        .get(function (req, res){
+            list.find({}, ok(next, function(error, posts) {
+                res.send(posts);
+            }));
+        });
+
+router
+    .param("id", function (req, res, next) {
+        req.dbQuery = {
+            id: parseInt(req.params.id, 10)
+        };
+        next();
+    })
+    .route("/api/lists/:id")
+        .get(function (req, res){
+            list.findOne({id:req.params.id}).exec(ok(next,function(prod){
+                res.send(prod.toJSON());
+            }));
+        })
+        .post(function (req, res){
+            var prod = new list(req.body);
+            prod.save(ok(next, function(results){
+                res.send(results);
+            }));
+        })
+        .put(function (req, res){
+            list.findOne({id: req.params.id}, ok(next, function(prod) {
+                prod.set(req.body);
+                prod.save(ok(next, function(prod) {
+                    res.send(prod.toJSON());
+                }));
+            }));
+        })
+        .delete(function (req, res){
+            list.findOne({id: req.params.id}, ok(next, function(prod){
+                prod.remove(ok(next, function(results){
+                    res.send(results);
+                }));
+            }));
+        });
+
+module.exports = router;
+
+app.listen (port);
+console.log("Listening on port " + port);

@@ -1,5 +1,0 @@
-[
-{"id":0, "name": "Oreo Mint Creme", "quantity": "575gr", "image": "oreomint.jpg", "stores":[{"name":"walmart", "price": 4.99}, {"costco": 3.25}, {"target": 3.99}]},
-{"id":1, "name": "Coke", "quantity": "12oz", "image": "coke.png", "stores":[{"name":"walmart", "price": 0.70}]},
-{"id":2, "name": "Kraft Extra Sharp Cheddar Cheese", "quantity": "32oz", "image": "kraft-cheddar.jpg", "stores":[{"name":"walmart", "price": 4.99}]}
-]

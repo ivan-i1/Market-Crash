@@ -1,0 +1,27 @@
+{
+  "name": "mCrash",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~4.0.0",
+    "mongoose": "~3.6.13",
+    "body-parser": "~1.0.1",
+    "morgan": "~1.2.1",
+    "http": "0.0.0",
+    "okay": "~1.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "version": "0.0.0",
+  "description": "ERROR: No README data found!",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ivan-i1/Market-Crash"
+  },
+  "author": "Ivan Rodriguez",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ivan-i1/Market-Crash/issues"
+  }
+}
